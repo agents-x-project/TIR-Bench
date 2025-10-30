@@ -7,7 +7,7 @@
 <a href="https://github.com/agents-x-project/TIR-Bench/edit/main/README.md" target="_blank">
     <img alt="arXiv" src="https://img.shields.io/badge/arXiv-red?logo=arxiv" height="20" />
 </a>
-<a href="TIR-Bench: A Comprehensive Benchmark for Agentic Thinking-with-Images Reasoning" target="_blank">
+<a href="https://huggingface.co/datasets/Agents-X/TIR-Bench" target="_blank">
     <img alt="HF Model: ViGaL" src="https://img.shields.io/badge/%F0%9F%A4%97%20_Benchmark-Data-ffc107?color=ffc107&logoColor=white" height="20" />
 </a>
 
