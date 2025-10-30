@@ -14,6 +14,9 @@
 
 </div>
 
+## 🎯Overview
+**TIR-Bench** is a comprehensive benchmark designed to evaluate the "thinking-with-images" capabilities of Multimodal Large Language Models (MLLMs), addressing a gap left by existing benchmarks like Visual Search which only test basic operations. As models like OpenAI o3 begin to intelligently create and operate tools to transform images for problem-solving, TIR-Bench provides 13 diverse tasks that each require novel tool use for image processing and manipulation within a chain-of-thought. Our evaluation of 22 leading MLLMs (including open-sourced, proprietary, and tool-augmented models) shows that TIR-Bench is universally challenging and that strong performance requires genuine agentic thinking-with-images capabilities. This repository contains the full benchmark, evaluation scripts, and a pilot study comparing direct versus agentic fine-tuning for this advanced reasoning.
+
 ## Extract answers from model responses.
 
 Add azure key in line 32 of extract_answer.py.
