@@ -1,6 +1,6 @@
 <div align="center">
 
-#  PyVision: Agentic Vision with Dynamic Tooling
+#  TIR-Bench: A Comprehensive Benchmark for Agentic Thinking-with-Images Reasoning
 
 
 
