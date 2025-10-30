@@ -18,7 +18,6 @@ import os
 from openai import AzureOpenAI
 from demo_prompts import demo_prompt_color
 from Levenshtein import distance
-from task_module import get_task_params, check_file
 import re
 from math_verify import parse, verify
 
