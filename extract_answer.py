@@ -19,7 +19,6 @@ import json
 import os
 from openai import AzureOpenAI
 from demo_prompts import demo_prompt_instrument, demo_prompt_refcoco, demo_prompt_contrast, demo_prompt_jigsaw, demo_prompt_color, demo_prompt_maze, demo_prompt_math, demo_prompt_symbolic, demo_prompt_word_search, demo_prompt_rotation_game, demo_prompt_spot_difference, demo_prompt_visual_search
-from task_module import get_task_params, check_file
 
 def create_test_prompt(demo_prompt, query, response):
     demo_prompt = demo_prompt.strip()
