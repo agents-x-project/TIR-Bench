@@ -4,7 +4,7 @@
 
 
 
-<a href="https://arxiv.org/abs/2507.07998" target="_blank">
+<a href="https://github.com/agents-x-project/TIR-Bench/edit/main/README.md" target="_blank">
     <img alt="arXiv" src="https://img.shields.io/badge/arXiv-red?logo=arxiv" height="20" />
 </a>
 <a href="TIR-Bench: A Comprehensive Benchmark for Agentic Thinking-with-Images Reasoning" target="_blank">
