@@ -4,7 +4,7 @@
 
 
 
-<a href="https://github.com/agents-x-project/TIR-Bench/edit/main/README.md" target="_blank">
+<a href="https://arxiv.org/abs/2511.01833" target="_blank">
     <img alt="arXiv" src="https://img.shields.io/badge/arXiv-red?logo=arxiv" height="20" />
 </a>
 <a href="https://huggingface.co/datasets/Agents-X/TIR-Bench" target="_blank">
