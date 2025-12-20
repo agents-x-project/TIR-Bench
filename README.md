@@ -46,3 +46,15 @@ Then run command below:
 ```bash
 python calculate_score.py
 ```
+
+
+## Citation
+If you use this benchmark in your research, please consider citing it as follows:
+```
+@article{li2025tir,
+  title={TIR-Bench: A Comprehensive Benchmark for Agentic Thinking-with-Images Reasoning},
+  author={Li, Ming and Zhong, Jike and Zhao, Shitian and Zhang, Haoquan and Lin, Shaoheng and Lai, Yuxiang and Chen, Wei and Psounis, Konstantinos and Zhang, Kaipeng},
+  journal={arXiv preprint arXiv:2511.01833},
+  year={2025}
+}
+```
