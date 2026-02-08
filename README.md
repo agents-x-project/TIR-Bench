@@ -23,11 +23,7 @@ Please first download and extract images from https://huggingface.co/datasets/Ag
 
 ## Extract answers from model responses.
 
-Add azure key in line 32 of extract_answer.py.
-
-Change file path in line 62 and line 66 of extract_answer.py. 
-
-Then run command below:
+Run command below:
 ```bash
 bash run_extract_answer.sh
 ```
@@ -41,7 +37,6 @@ Note that response file shoule follow structure below:
 ```
 
 ## Calculate Score
-Change file path in line 42 and line 45 of calculate_score.py. 
 
 Then run command below:
 ```bash
