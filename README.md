@@ -33,11 +33,10 @@ bash run_extract_answer.sh
 ```
 
 Note that response file shoule follow structure below:
-```json
+```bash
 {
   '0': content, 
   '1': content
-  # ......
 }
 ```
 
