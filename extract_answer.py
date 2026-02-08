@@ -99,9 +99,7 @@ def process_file(file_path, model_name, api_config_path):
         
         demo_prompt = demo_prompt_map[task]
         
-        if 'extracted_answer' in item.keys():
-            continue
-            
+        # 对所有 item 都直接提取 answer，无论是否已经存在 extracted_answer
         text = item['prompt']
         response = item['model_response']
         assert response is not None
@@ -119,7 +117,7 @@ def process_file(file_path, model_name, api_config_path):
         l += 1
         
     with open(file_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False)
+        json.dump(data, f, indent=4, ensure_ascii=False)
     
     print(f"Completed: {file_path}")
 
@@ -139,7 +137,7 @@ def main():
     parser.add_argument(
         '--data-dir', 
         type=str, 
-        default='/home/ming/results_TIR/',
+        default='/home/user/results_TIR/',
         help='Directory containing the JSON files'
     )
     
@@ -148,44 +146,20 @@ def main():
         '--api-config-path', 
         type=str, 
         default='',
-        help='Azure OpenAI API key'
+        help='OpenAI API config path'
     )
     # 模型参数
     parser.add_argument(
         '--model', 
         type=str, 
-        default='gpt-4o',
-        choices=['gpt-4o', 'gpt-4o-mini', 'o1', 'o3-mini', 'o3', 'o4-mini', 
-                 'gpt-4.1', 'gpt-4.1-mini', 'gpt-4.1-nano'],
+        default='gpt-4.1',
+        choices=['gpt-4.1', 'gpt-4.1-mini', 'gpt-4.1-nano'],
         help='Model to use for extraction'
-    )
-    
-    # 其他选项
-    parser.add_argument(
-        '--skip-existing', 
-        action='store_true',
-        default=True,
-        help='Skip items that already have extracted_answer (default: True)'
-    )
-    parser.add_argument(
-        '--no-skip-existing', 
-        dest='skip_existing',
-        action='store_false',
-        help='Force re-extraction even if extracted_answer exists'
     )
 
     args = parser.parse_args()
 
-    # 处理文件列表
-    if not args.files:
-        print("No files specified. Use --files to provide comma-separated file list.")
-        return
-
     file_list = [f.strip() for f in args.files.split(',') if f.strip()]
-    
-    if not file_list:
-        print("No valid files to process.")
-        return
 
     # 处理每个文件
     for filename in file_list:
