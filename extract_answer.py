@@ -14,8 +14,8 @@ from tqdm import tqdm
 import re
 import concurrent.futures
 import json
-import argparse  # 新增
-from openai import AzureOpenAI
+import argparse
+from openai import OpenAI
 from demo_prompts import (
     demo_prompt_instrument, demo_prompt_refcoco, demo_prompt_contrast,
     demo_prompt_jigsaw, demo_prompt_color, demo_prompt_maze, demo_prompt_math,
@@ -31,11 +31,10 @@ def create_test_prompt(demo_prompt, query, response):
     return full_prompt
 
 
-def get_response_text(model, text, api_key, azure_endpoint, api_version="2025-01-01-preview"):
-    client = AzureOpenAI(
-        azure_endpoint=azure_endpoint,
+def get_response_text(model, text, api_key, base_url):
+    client = OpenAI(
         api_key=api_key,
-        api_version=api_version
+        base_url=base_url
     )
     patience = 100
     while patience > 0:
@@ -53,12 +52,16 @@ def get_response_text(model, text, api_key, azure_endpoint, api_version="2025-01
             print(e)
 
 
-def process_file(file_path, model_name, api_key, azure_endpoint, api_version):
+def process_file(file_path, model_name, api_config_path):
     """处理单个JSON文件的逻辑"""
     print(f"Processing: {file_path}")
     
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
+
+    api_config = json.load(open(api_config_path, "r"))
+    api_key = api_config['api_key']
+    base_url = api_config['base_url']
 
     keys = data.keys()
     l = 0
@@ -105,7 +108,7 @@ def process_file(file_path, model_name, api_key, azure_endpoint, api_version):
 
         full_prompt = create_test_prompt(demo_prompt, text, response)
         extracted_answer = get_response_text(
-            model_name, full_prompt, api_key, azure_endpoint, api_version
+            model_name, full_prompt, api_key, base_url
         )
         item['extracted_answer'] = extracted_answer
         
@@ -142,24 +145,11 @@ def main():
     
     # Azure OpenAI 参数
     parser.add_argument(
-        '--api-key', 
+        '--api-config-path', 
         type=str, 
         default='',
         help='Azure OpenAI API key'
     )
-    parser.add_argument(
-        '--endpoint', 
-        type=str, 
-        default='https://gpt.yunstorm.com/',
-        help='Azure OpenAI endpoint URL'
-    )
-    parser.add_argument(
-        '--api-version', 
-        type=str, 
-        default='2025-01-01-preview',
-        help='Azure OpenAI API version'
-    )
-    
     # 模型参数
     parser.add_argument(
         '--model', 
@@ -209,9 +199,7 @@ def main():
             process_file(
                 file_path=file_path,
                 model_name=args.model,
-                api_key=args.api_key,
-                azure_endpoint=args.endpoint,
-                api_version=args.api_version
+                api_config_path=args.api_config_path
             )
         except Exception as e:
             print(f"Error processing {file_path}: {e}")
